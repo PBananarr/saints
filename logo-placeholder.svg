@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="SAINTS TATTOO Logo Platzhalter">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#b87333"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="47" fill="#111" stroke="url(#g)" stroke-width="2"/>
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#b87333" stroke-width="2" stroke-dasharray="4 6"/>
+  <g font-family="Oswald, Arial, sans-serif" font-size="9" fill="#fff" letter-spacing="2">
+    <text dy="-30" x="50" text-anchor="middle">SAINTS</text>
+    <text dy="46" x="50" text-anchor="middle">TATTOO</text>
+  </g>
+  <g transform="translate(50,55)" fill="#fff">
+    <path d="M-10,-4 a10,9 0 1 1 20,0 v6 c0,2 -2,4 -4,4 h-12 c-2,0 -4,-2 -4,-4z"/>
+    <circle cx="-4" cy="-2" r="2.5" fill="#111"/>
+    <circle cx="4" cy="-2" r="2.5" fill="#111"/>
+    <rect x="-3" y="3" width="6" height="3" rx="1" fill="#111"/>
+  </g>
+</svg>
