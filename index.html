@@ -1,0 +1,205 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SAINTS TATTOO – Pirna</title>
+  <meta name="description"
+    content="SAINTS TATTOO in Pirna – Galerie, Vita & Termin-Anfrage. Moderne, klare Seite mit starken Übergängen und sanften Slide-Effekten.">
+
+  <!-- Lokale Fonts preladen (wichtigste Schnitte) -->
+  <link rel="preload" as="font" href="fonts/oswald-v57-latin-700.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="fonts/inter-v20-latin-400.woff2" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header" id="top">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="SAINTS TATTOO Start">
+        <img class="logo" src="logo-saints.svg" alt="SAINTS TATTOO Logo" width="44" height="44" />
+        <span class="brand-title">SAINTS TATTOO</span>
+      </a>
+
+      <!-- Desktop-Navigation -->
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="#about">Über mich</a>
+        <a href="#gallery">Galerie</a>
+        <a href="#contact">Kontakt</a>
+      </nav>
+
+      <!-- Termin-Button (immer sichtbar) -->
+      <a class="cta header-cta" href="#booking">Termin</a>
+
+      <!-- Hamburger (nur mobil) -->
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu"
+        aria-label="Menü öffnen">
+        ☰
+      </button>
+    </div>
+
+    <!-- Dropdown-Menü für Mobil -->
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <a href="#about">Über mich</a>
+      <a href="#gallery">Galerie</a>
+      <a href="#contact">Kontakt</a>
+    </div>
+  </header>
+
+  <!-- ===== Hero (minimal) ===== -->
+  <section class="hero hero-v2 hero-minimal" aria-label="Hero" style="--hero:url('img/tattoo-bg1.png')">
+    <div class="wrap hero-grid">
+      <div class="hero-copy slide-up">
+        <span class="tag">Lange Str. 8 · Pirna</span>
+        <h1 class="headline">SAINTS TATTOO</h1>
+        <h2 class="subline">Mouchels-Ink</h2>
+      </div>
+    </div>
+    <div class="section-sep copper"></div>
+  </section>
+
+  <!-- ===== About me ===== -->
+  <section id="about" class="section about-v2">
+    <div class="wrap about-grid">
+      <div class="about-text slide-left">
+        <h2>Der Chef </h2>
+        <p class="kicker">„Aus dem Hobby wurde Handwerk, aus dem Handwerk wurde <strong>SAINTS TATTOO“</strong></p>
+        <p>
+          Ich habe meinen eigenen Weg auf der Haut verewigt – jedes Tattoo erinnert mich daran, dass es immer eine
+          Chance gibt.
+          Mit derselben Leidenschaft entwerfe ich Motive, die deine Geschichte tragen. Detail, Präzision und
+          Individualität sind mir dabei heilig.
+        </p>
+        <ul class="bullets">
+          <li>Lieblingslooks: dezente, zeitlose schwarze Fineliner-Tattoos</li>
+          <li>Seit 2021 selbstständig · 2024 eigenes Studio</li>
+          <li>Saubere Linien, ruhige Atmosphäre, klare Beratung</li>
+        </ul>
+      </div>
+      <figure class="about-portrait slide-right">
+        <img src="img/chef.png" alt="Portrait – Michel Bretschneider" />
+      </figure>
+    </div>
+    <div class="section-sep light"></div>
+  </section>
+
+  <!-- ===== Galerie ===== -->
+  <section id="gallery" class="section gallery-v2">
+    <div class="wrap">
+      <header class="section-head">
+        <h2 class="slide-up">Galerie</h2>
+        <p class="sub slide-up">Kunst auf Haut: Diese Werke sind nur ein Einblick in meinen Stil – den Rest zeige ich
+          dir auf Instagram.</p>
+      </header>
+
+      <div class="grid works" id="works">
+        <figure class="work-card reveal-zoom" data-title="Tattoo 1"><img src="img/tattoo1.jpg" alt="Tattoo 1" />
+        </figure>
+        <figure class="work-card reveal-zoom" data-title="Tattoo 2"><img src="img/tattoo2.jpg" alt="Tattoo 2" />
+        </figure>
+        <figure class="work-card reveal-zoom" data-title="Tattoo 3"><img src="img/tattoo3.jpg" alt="Tattoo 3" />
+        </figure>
+        <figure class="work-card reveal-zoom" data-title="Tattoo 4"><img src="img/tattoo4.jpg" alt="Tattoo 4" />
+        </figure>
+        <figure class="work-card reveal-zoom" data-title="Tattoo 5"><img src="img/tattoo5.jpg" alt="Tattoo 5" />
+        </figure>
+        <figure class="work-card reveal-zoom" data-title="Tattoo 5"><img src="img/tattoo6.jpg" alt="Tattoo 5" />
+        </figure>
+        <figure class="work-card reveal-zoom" data-title="Tattoo 5"><img src="img/tattoo7.jpg" alt="Tattoo 5" />
+        </figure>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lb-nav prev" aria-label="Vorheriges">‹</button>
+      <img alt="Werk" />
+      <button class="lb-nav next" aria-label="Nächstes">›</button>
+      <button class="close" id="lbClose" aria-label="Schließen">Schließen ✕</button>
+      <div class="lb-cap" aria-live="polite"></div>
+    </div>
+
+    <div class="section-sep copper"></div>
+  </section>
+
+  <!-- ===== Kontakt / Termin / Map ===== -->
+  <section id="booking" class="section booking-v2">
+    <div class="wrap booking-grid">
+      <form id="bookingForm" class="card slide-up">
+        <h2>Termin anfragen</h2>
+        <div class="row">
+          <label>Vorname &amp; Nachname
+            <input name="name" required placeholder="Max Muster" />
+          </label>
+          <label>E-Mail
+            <input type="email" name="email" required placeholder="du@example.com" />
+          </label>
+        </div>
+        <div class="row">
+          <label>Telefon (optional)
+            <input name="phone" placeholder="0151…" />
+          </label>
+          <label>Wunschtermin (flexibel ist okay)
+            <input type="date" name="date" />
+          </label>
+        </div>
+        <label>Motividee / Nachricht
+          <textarea name="message" placeholder="Beschreibe deine Idee kurz…"></textarea>
+        </label>
+        <button class="btn" type="submit">Anfrage senden</button>
+      </form>
+
+      <aside class="card info slide-left" id="contact">
+        <h3>Studio</h3>
+        <p><strong>SAINTS TATTOO</strong><br>Lange Str. 8, 01796 Pirna</p><br>
+        <h4>Öffnungszeiten</h4>
+        <p>Montag – Freitag · 09:00–15:00</p>
+        <p>Samstag und Sonntag · Ruhetag</p><br>
+        <p>E-Mail: <a href="mailto:mouchel.bretschneider@gmail.com">mouchel.bretschneider@gmail.com</a></p>
+        <a class="btn ghost" target="_blank" rel="noopener"
+          href="https://www.google.com/maps/search/?api=1&query=Lange+Str.+8%2C+01796+Pirna">Route planen</a>
+      </aside>
+
+      <div class="card map slide-right">
+        <div class="map-embed">
+          <iframe title="Karte – SAINTS TATTOO" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Lange%20Str.%208%2001796%20Pirna&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="section-sep dark"></div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="wrap foot-grid">
+      <a class="ig" href="https://www.instagram.com/saints_tattoo_1988/" target="_blank" rel="noopener"
+        aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path
+            d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1 5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 0 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2A2.8 2.8 0 1 0 12 16.8 2.8 2.8 0 0 0 12 9.2zM18 6.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+            fill="currentColor" />
+        </svg>
+        <span>Instagram</span>
+      </a>
+      <a class="link" href="/impressum">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <!-- Datei mit umgeklappter Ecke -->
+          <path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8h-6V2z" />
+          <path fill="currentColor" d="M14 2l6 6h-6V2z" />
+        </svg>
+        Impressum
+      </a>
+
+      <div class="addr">© <span id="year"></span> SAINTS TATTOO · Lange Str. 8, 01796 Pirna</div>
+    </div>
+  </footer>
+
+  <script defer src="main.js"></script>
+</body>
+
+</html>
