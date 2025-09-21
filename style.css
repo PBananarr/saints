@@ -1,5 +1,5 @@
 /* =========================
-   SAINTS TATTOO – Global CSS
+   style.css
    ========================= */
 
 :root {
@@ -54,6 +54,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Inter";
   src: url("fonts/inter-v20-latin-regular.woff2") format("woff2");
@@ -61,6 +62,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Inter";
   src: url("fonts/inter-v20-latin-600.woff2") format("woff2");
@@ -68,6 +70,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Inter";
   src: url("fonts/inter-v20-latin-700.woff2") format("woff2");
@@ -83,6 +86,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Oswald";
   src: url("fonts/oswald-v57-latin-regular.woff2") format("woff2");
@@ -90,6 +94,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Oswald";
   src: url("fonts/oswald-v57-latin-600.woff2") format("woff2");
@@ -97,6 +102,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Oswald";
   src: url("fonts/oswald-v57-latin-700.woff2") format("woff2");
@@ -104,8 +110,6 @@
   font-style: normal;
   font-display: swap;
 }
-
-
 
 /* Reset basics */
 * {
@@ -393,32 +397,32 @@ a:focus-visible {
   overflow: hidden;
 }
 
-.hero-v2{ 
-  --hero-x: 56%;  /* horizontale Position des Bildfokus (50% = exakt mittig) */
-  --hero-y: 50%;  /* vertikale Position */
+.hero-v2 {
+  --hero-x: 56%;
+  --hero-y: 50%;
 }
 
-.hero-v2::before{
-  content:"";
-  position:absolute;
-  inset:0;
+.hero-v2::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background:
-    linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.4)),
+    linear-gradient(180deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .4)),
     var(--hero) no-repeat;
   background-size: cover;
   background-position: var(--hero-x) var(--hero-y);
   filter: saturate(1.05);
 }
 
-.hero-grid{
+.hero-grid {
   position: relative;
   z-index: 1;
   width: 100%;
-  display: grid;            /* stellt sicher, dass Children zentriert werden */
+  display: grid;
   justify-items: center;
 }
 
-.hero-copy{
+.hero-copy {
   max-width: 1000px;
   margin-inline: auto;
   text-align: left;
@@ -482,16 +486,13 @@ a:focus-visible {
 
 /* Gleichmäßiger Abstand um die Trenner herum – egal ob innen oder außen */
 .section .section-sep {
-  /* Trenner am Ende der Section (dein Markup) */
   margin-block: clamp(40px, 5vw, 64px);
 }
 
 .section+.section-sep {
-  /* Falls Trenner außerhalb der Section steht */
   margin-block: clamp(40px, 5vw, 64px);
 }
 
-/* Wenn Trenner IN der Section ist: verhindere doppeltes Padding unten */
 @supports selector(.section:has(.section-sep)) {
   .section:has(.section-sep) {
     padding-bottom: 0;
@@ -501,7 +502,6 @@ a:focus-visible {
 /* ---------- Sections ---------- */
 .section {
   padding-block: clamp(72px, 10vw, 120px);
-  /* symmetrisch oben/unten */
   position: relative;
 }
 
@@ -551,18 +551,15 @@ h2.subline {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: var(--space-4);
-  /* mehr Luft zwischen Text und Bild */
   align-items: center;
 }
 
-/* Strukturierter Text-Stack */
 .about-text {
   display: grid;
   grid-auto-rows: max-content;
   row-gap: var(--space-2);
   align-content: center;
   max-width: 68ch;
-  /* angenehme Länge neben dem Bild */
   padding-block: var(--space-1);
 }
 
@@ -581,7 +578,6 @@ h2.subline {
   margin: 0
 }
 
-/* Gaps kommen aus row-gap */
 .about-text .bullets {
   margin: var(--space-2) 0 0;
   padding-left: 18px;
@@ -651,11 +647,8 @@ h2.subline {
   display: grid;
   grid-auto-rows: max-content;
   row-gap: var(--space-2);
-  /* = About row-gap */
   margin-bottom: var(--space-3);
-  /* Luft zur Grid der Bilder */
   max-width: 68ch;
-  /* gleiche Zeilenlänge wie About */
 }
 
 .section-head h2,
@@ -663,7 +656,6 @@ h2.subline {
   margin: 0;
 }
 
-/* Abstände kommen über row-gap */
 @media (min-width:1200px) {
   .section-head {
     row-gap: var(--space-3);
@@ -692,19 +684,45 @@ h2.subline {
   }
 }
 
+/* === Kachel & Bildverhältnis === */
 .work-card {
   position: relative;
   overflow: hidden;
   border-radius: 16px;
   background: #0d0d0e;
   border: 1px solid rgba(255, 255, 255, .06);
+  aspect-ratio: 3 / 4;
+  /* ✅ Desktop jetzt auch portraitig */
+  cursor: pointer;
+  -webkit-transform: translateZ(0);
+  will-change: transform;
 }
 
 .work-card img {
   width: 100%;
-  height: clamp(200px, 28vw, 420px);
+  height: 100%;
   object-fit: cover;
   transition: transform .35s ease, filter .35s ease;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+}
+
+@media (max-width:860px) {
+  .work-card {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+@media (max-width:480px) {
+  .work-card {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+@media (min-width:1600px) {
+  .work-card {
+    max-height: 520px;
+  }
 }
 
 .work-card::after {
@@ -1207,61 +1225,78 @@ textarea {
   }
 }
 
-/* --- Wide Desktop / TV (>=1320px): Bild leicht nach rechts schieben,
-       damit der Tresen mittig unter der Headline bleibt --- */
-@media (min-width:1320px){
-  .hero-v2{ --hero-x: 58%; }
+/* --- Wide Desktop / TV (>=1320px) --- */
+@media (min-width:1320px) {
+  .hero-v2 {
+    --hero-x: 58%;
+  }
 }
-@media (min-width:1600px){
-  .hero-v2{ --hero-x: 60%; }
+
+@media (min-width:1600px) {
+  .hero-v2 {
+    --hero-x: 60%;
+  }
 }
-@media (min-width:2000px){
-  .hero-v2{ --hero-x: 61%; }
+
+@media (min-width:2000px) {
+  .hero-v2 {
+    --hero-x: 61%;
+  }
 }
 
 /* --- Laptops / Tablets quer (861–1319px) --- */
-@media (max-width:1319px) and (min-width:861px){
-  .hero-v2{ --hero-x: 54%; }
+@media (max-width:1319px) and (min-width:861px) {
+  .hero-v2 {
+    --hero-x: 54%;
+  }
 }
 
-/* --- Tablets & Phones: flacherer Hero + leicht anderer Fokus,
-       damit nichts „in die Länge“ gezogen wirkt --- */
-@media (max-width:860px){
-  .hero{ min-height: 72vh; }
-  .hero-v2{ --hero-x: 52%; --hero-y: 48%; }
+/* --- Tablets & Phones: flacherer Hero --- */
+@media (max-width:860px) {
+  .hero {
+    min-height: 72vh;
+  }
+
+  .hero-v2 {
+    --hero-x: 52%;
+    --hero-y: 48%;
+  }
 }
 
-@media (max-width:480px){
-  .hero{ min-height: 64vh; }     /* noch etwas flacher am Handy */
-  .hero-v2{ --hero-x: 52%; --hero-y: 46%; }
+@media (max-width:480px) {
+  .hero {
+    min-height: 64vh;
+  }
+
+  .hero-v2 {
+    --hero-x: 52%;
+    --hero-y: 46%;
+  }
 }
 
 /* ===== Hero immer Fullscreen – alle Geräte ===== */
-
-/* keine Verschiebung nach unten, Header liegt einfach drüber */
-.hero{
+.hero {
   margin-top: 0;
-  /* Fallback + moderne Units für Mobile-Browser */
-  min-height: 100svh;  /* safe viewport */
-  min-height: 100dvh;  /* dynamic viewport (iOS/Android modern) */
+  min-height: 100svh;
+  min-height: 100dvh;
 }
 
-/* zur Sicherheit: auch auf kleineren Breakpoints Fullscreen erzwingen */
-@media (max-width: 860px){
-  .hero{
+@media (max-width:860px) {
+  .hero {
     min-height: 100svh;
     min-height: 100dvh;
   }
 }
-@media (max-width: 480px){
-  .hero{
+
+@media (max-width:480px) {
+  .hero {
     min-height: 100svh;
     min-height: 100dvh;
   }
 }
 
 .site-footer .ig,
-.site-footer .link{
+.site-footer .link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -1269,19 +1304,111 @@ textarea {
 }
 
 .site-footer .ig svg,
-.site-footer .link svg{
+.site-footer .link svg {
   width: 22px;
   height: 22px;
   flex: 0 0 auto;
 }
 
 /* ===== Navbar: fester Hintergrund auf allen Geräten ===== */
-.site-header{
-  background: #0f0f10 !important;   /* solid, keine Glas-Optik */
-  backdrop-filter: none;             /* Sicherheit: Blur aus */
+.site-header {
+  background: #0f0f10 !important;
+  backdrop-filter: none;
 }
 
-.site-header.scrolled{
-  background: #0f0f10 !important;   /* beim Scrollen gleich lassen */
-  box-shadow: 0 8px 24px rgba(0,0,0,.28); /* kannst du behalten/entfernen */
+.site-header.scrolled {
+  background: #0f0f10 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .28);
+}
+
+/* ===== Galerie: Carousel ===== */
+.carousel {
+  position: relative;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  contain: paint;
+  /* ✅ isoliert, verhindert Flicker */
+}
+
+.carousel-track {
+  display: flex;
+  gap: 18px;
+  will-change: transform;
+  transition: transform .35s ease;
+  touch-action: pan-y;
+  padding-block: 2px;
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Basisbreiten */
+.carousel-track .work-card {
+  flex: 0 0 25%;
+}
+
+@media (max-width:1199px) {
+  .carousel-track .work-card {
+    flex-basis: 33.3333%;
+  }
+}
+
+@media (max-width:860px) {
+  .carousel-track .work-card {
+    flex-basis: 50%;
+  }
+}
+
+@media (max-width:480px) {
+  .carousel-track .work-card {
+    flex-basis: 100%;
+  }
+}
+
+/* Pfeile */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  background: rgba(0, 0, 0, .55);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .32);
+}
+
+.carousel-nav.prev {
+  left: -6px;
+}
+
+.carousel-nav.next {
+  right: -6px;
+}
+
+.carousel-nav:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+}
+
+@media (max-width:860px) {
+  .carousel-nav.prev {
+    left: 6px;
+  }
+
+  .carousel-nav.next {
+    right: 6px;
+  }
+}
+
+/* Drag-Zustand */
+.carousel.dragging .carousel-track {
+  cursor: grabbing;
+  user-select: none;
 }
