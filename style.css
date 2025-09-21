@@ -695,6 +695,7 @@ h2.subline {
   /* ✅ Desktop jetzt auch portraitig */
   cursor: pointer;
   -webkit-transform: translateZ(0);
+  transform: translateZ(0);
   will-change: transform;
 }
 
@@ -705,6 +706,7 @@ h2.subline {
   transition: transform .35s ease, filter .35s ease;
   backface-visibility: hidden;
   -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 @media (max-width:860px) {
@@ -1340,6 +1342,7 @@ textarea {
   touch-action: pan-y;
   padding-block: 2px;
   -webkit-transform: translateZ(0);
+  transform: translateZ(0);
   backface-visibility: hidden;
 }
 
@@ -1411,4 +1414,27 @@ textarea {
 .carousel.dragging .carousel-track {
   cursor: grabbing;
   user-select: none;
+}
+
+/* Hover-Effekte pausieren, solange der Track animiert oder gezogen wird */
+.carousel.animating .work-card:hover img,
+.carousel.dragging .work-card:hover img {
+  transform: none !important;
+}
+
+
+/* Logo im Kontakt-Card Hintergrund */
+#contact {
+  position: relative; /* wichtig, damit das Logo absolut platziert werden kann */
+  overflow: hidden;   /* Logo bleibt innerhalb der Karte */
+}
+
+.contact-logo-bg {
+  position: absolute;
+  top: 20px;
+  right: -9px;
+  width: clamp(160px, 45%, 320px); /* deutlich größer */
+  opacity: 0.28;                   /* stärker sichtbar */
+  z-index: 0;                     /* hinter dem Text */
+  pointer-events: none;            /* nicht klickbar */
 }

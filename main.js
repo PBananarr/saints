@@ -128,11 +128,21 @@ addEventListener('keydown', (e) => { if (!lb?.classList.contains('open')) return
   function go(dir) {
     index += dir * 1;
     index = Math.max(0, Math.min(index, slides.length - perView));
-    apply(); updateBtns();
+    root.classList.add('animating');   // ← NEU: Flag für CSS-Hover-Pause
+    apply();
+    updateBtns();
   }
+
 
   btnPrev?.addEventListener('click', () => go(-1));
   btnNext?.addEventListener('click', () => go(1));
+
+  track.addEventListener('transitionend', (e) => {
+    if (e.propertyName === 'transform') {
+      root.classList.remove('animating');
+    }
+  });
+
 
   // Keyboard (falls Fokus auf Carousel-Buttons oder innerhalb)
   root.addEventListener('keydown', (e) => {
@@ -163,7 +173,7 @@ addEventListener('keydown', (e) => { if (!lb?.classList.contains('open')) return
       moved = true;
       window.__CAROUSEL_DRAGGED__ = true;
       // Erst jetzt Pointer Capture – so bleibt Click-Event auf Cards intakt
-      try { track.setPointerCapture(activePointerId); } catch {}
+      try { track.setPointerCapture(activePointerId); } catch { }
     }
 
     if (moved) {
@@ -180,7 +190,7 @@ addEventListener('keydown', (e) => { if (!lb?.classList.contains('open')) return
     root.classList.remove('dragging');
 
     // Capture sauber lösen (fix für festhängende Pointer)
-    try { if (activePointerId != null) track.releasePointerCapture(activePointerId); } catch {}
+    try { if (activePointerId != null) track.releasePointerCapture(activePointerId); } catch { }
     activePointerId = null;
 
     const totalDx = (lastX - startX);
