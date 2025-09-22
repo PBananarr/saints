@@ -228,7 +228,7 @@ function sendMail(e) {
   const fd = new FormData(e.target); const d = Object.fromEntries(fd.entries());
   const subject = encodeURIComponent(`Termin – ${d.name || ''}`);
   const body = encodeURIComponent(`Name: ${d.name}\nE-Mail: ${d.email}\nTelefon: ${d.phone || '-'}\nWunschtermin: ${d.date || '-'}\nStil: ${d.style || '-'}\n\nNachricht:\n${d.message || ''}`);
-  location.href = `mailto:mikimineta@tutanota.com?subject=${subject}&body=${body}`;
+  location.href = `mailto:mouchel.bretschneider@gmail.com?subject=${subject}&body=${body}`;
 }
 if (bookingForm) bookingForm.addEventListener('submit', sendMail);
 
