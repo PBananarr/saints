@@ -1,5 +1,19 @@
 // ============ main.js ============
 
+// --- Scroll-Restoration kontrollieren (Reload sauber oben starten) ---
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+addEventListener('load', () => {
+  const nav = performance.getEntriesByType?.('navigation')?.[0];
+  const isReload = nav && nav.type === 'reload';
+  const hasHash = !!location.hash;
+  if (isReload && !hasHash) {
+    window.scrollTo(0, 0);
+    setTimeout(() => window.scrollTo(0, 0), 0);
+  }
+});
+
 // Header: beim Scrollen leicht abdunkeln
 const header = document.querySelector('.site-header');
 function onScroll() {
@@ -42,6 +56,18 @@ addEventListener('click', e => {
   if (!inside) closeMenu();
 });
 addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+// Smooth-Scroll nur bei internen Link-Klicks (kein globales smooth)
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.pushState(null, '', '#' + id);
+  });
+});
 
 // Lightbox for gallery
 const lb = document.getElementById('lightbox');
@@ -128,11 +154,10 @@ addEventListener('keydown', (e) => { if (!lb?.classList.contains('open')) return
   function go(dir) {
     index += dir * 1;
     index = Math.max(0, Math.min(index, slides.length - perView));
-    root.classList.add('animating');   // ← NEU: Flag für CSS-Hover-Pause
+    root.classList.add('animating');
     apply();
     updateBtns();
   }
-
 
   btnPrev?.addEventListener('click', () => go(-1));
   btnNext?.addEventListener('click', () => go(1));
@@ -143,16 +168,15 @@ addEventListener('keydown', (e) => { if (!lb?.classList.contains('open')) return
     }
   });
 
-
-  // Keyboard (falls Fokus auf Carousel-Buttons oder innerhalb)
+  // Keyboard
   root.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') go(-1);
     if (e.key === 'ArrowRight') go(1);
   });
 
-  // Drag / Swipe (Pointer Events) – Pointer Capture erst nach Schwelle
+  // Drag / Swipe (Pointer Events)
   track.addEventListener('pointerdown', (e) => {
-    if (e.button !== 0) return; // nur linker Button
+    if (e.button !== 0) return;
     dragging = true;
     moved = false;
     window.__CAROUSEL_DRAGGED__ = false;
@@ -168,28 +192,25 @@ addEventListener('keydown', (e) => { if (!lb?.classList.contains('open')) return
     lastX = e.clientX;
     const total = lastX - startX;
 
-    // Erst ab ~8px horizontaler Bewegung als „Swipe“ interpretieren
     if (!moved && Math.abs(total) > 8) {
       moved = true;
       window.__CAROUSEL_DRAGGED__ = true;
-      // Erst jetzt Pointer Capture – so bleibt Click-Event auf Cards intakt
       try { track.setPointerCapture(activePointerId); } catch { }
     }
 
     if (moved) {
       const currentX = -index * slideW + total;
       track.style.transform = `translate3d(${currentX}px,0,0)`;
-      e.preventDefault(); // verhindert Text-Selektion
+      e.preventDefault();
     }
   });
 
   const endDrag = (e) => {
     if (!dragging || (activePointerId !== null && e.pointerId !== activePointerId)) return;
     dragging = false;
-    track.style.transition = ''; // zurück zur CSS-Transition
+    track.style.transition = '';
     root.classList.remove('dragging');
 
-    // Capture sauber lösen (fix für festhängende Pointer)
     try { if (activePointerId != null) track.releasePointerCapture(activePointerId); } catch { }
     activePointerId = null;
 
@@ -197,28 +218,23 @@ addEventListener('keydown', (e) => { if (!lb?.classList.contains('open')) return
     if (moved && Math.abs(totalDx) > slideW * 0.25) {
       go(totalDx < 0 ? 1 : -1);
     } else {
-      // Kein „echter“ Swipe -> Position zurücksetzen und Klick erlauben
       apply();
       window.__CAROUSEL_DRAGGED__ = false;
     }
 
-    // Nach dem Frame Klicks wieder erlauben
     requestAnimationFrame(() => { window.__CAROUSEL_DRAGGED__ = false; });
   };
 
   track.addEventListener('pointerup', endDrag);
   track.addEventListener('pointercancel', endDrag);
-  track.addEventListener('pointerleave', (e) => {
-    if (!dragging) return;
-    endDrag(e);
-  });
+  track.addEventListener('pointerleave', (e) => { if (!dragging) return; endDrag(e); });
 
-  // Resize / Orientation
   addEventListener('resize', measure);
-  addEventListener('load', measure);
+  // Erste Messung minimal später -> stabiler nach initialem Layout
+  addEventListener('load', () => requestAnimationFrame(measure));
 
   // Init
-  measure();
+  requestAnimationFrame(measure);
 })();
 
 // Booking via mailto
