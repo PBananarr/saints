@@ -1,6 +1,6 @@
 // ============ main.js ============
 
-// --- Scroll-Restoration kontrollieren (Reload sauber oben starten) ---
+// --- Scroll-Restoration kontrollieren ---
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
@@ -76,14 +76,14 @@ addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 // Sicherheitsnetz: Fenster-Resize -> Menü schließen (Layoutwechsel)
 addEventListener('resize', closeMenu);
 
-// Optional: Klicks *irgendwo* außerhalb (falls du den Backdrop mal entfernst)
+
 addEventListener('click', (e) => {
   if (!mobileMenu || mobileMenu.hidden) return;
   const inside = mobileMenu.contains(e.target) || menuBtn.contains(e.target);
   if (!inside && !menuBackdrop) closeMenu();
 });
 
-// Smooth-Scroll nur bei internen Link-Klicks (kein globales smooth)
+// Smooth-Scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', (e) => {
     const id = a.getAttribute('href').slice(1);
@@ -105,7 +105,7 @@ const btnClose = document.getElementById('lbClose');
 const cards = [...document.querySelectorAll('.work-card')];
 let current = 0;
 
-// Flag vom Carousel: unterdrückt Klicks, wenn tatsächlich geswiped wurde
+
 window.__CAROUSEL_DRAGGED__ = false;
 
 function openLB(i) {
@@ -120,7 +120,7 @@ function nav(step) { current = (current + step + cards.length) % cards.length; o
 
 cards.forEach((c, i) => {
   c.addEventListener('click', () => {
-    if (window.__CAROUSEL_DRAGGED__) return; // Klick ignorieren, wenn vorher Drag
+    if (window.__CAROUSEL_DRAGGED__) return; 
     openLB(i);
   });
 });
@@ -140,9 +140,9 @@ addEventListener('keydown', (e) => { if (!lb?.classList.contains('open')) return
   const btnPrev = root.querySelector('.carousel-nav.prev');
   const btnNext = root.querySelector('.carousel-nav.next');
 
-  let index = 0;       // aktuelle erste Slide im View
-  let perView = 4;     // wird dynamisch berechnet
-  let slideW = 0;      // px-Breite inkl. Gap
+  let index = 0;       
+  let perView = 4;     
+  let slideW = 0;      
   let dragging = false;
   let moved = false;
   let startX = 0;
@@ -256,14 +256,14 @@ addEventListener('keydown', (e) => { if (!lb?.classList.contains('open')) return
   track.addEventListener('pointerleave', (e) => { if (!dragging) return; endDrag(e); });
 
   addEventListener('resize', measure);
-  // Erste Messung minimal später -> stabiler nach initialem Layout
+
   addEventListener('load', () => requestAnimationFrame(measure));
 
   // Init
   requestAnimationFrame(measure);
 })();
 
-// Booking via mailto
+// Booking via mailto (nur zu testzwecken, nach webhosting vernünftig)
 const bookingForm = document.getElementById('bookingForm');
 function sendMail(e) {
   e.preventDefault();
