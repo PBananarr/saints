@@ -33,29 +33,55 @@ const io = new IntersectionObserver((entries) => {
   document.querySelectorAll(sel).forEach(el => io.observe(el));
 });
 
-// Hamburger Dropdown
+// Hamburger Dropdown (+ Backdrop zum Schließen durch Klick außen)
 const menuBtn = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
+const menuBackdrop = document.getElementById('menuBackdrop');
+
+function openMenu() {
+  if (!mobileMenu) return;
+  mobileMenu.hidden = false;
+  menuBackdrop && (menuBackdrop.hidden = false);
+  menuBtn?.setAttribute('aria-expanded', 'true');
+  document.body.classList.add('menu-open');
+}
 
 function closeMenu() {
   if (!mobileMenu) return;
   mobileMenu.hidden = true;
+  menuBackdrop && (menuBackdrop.hidden = true);
   menuBtn?.setAttribute('aria-expanded', 'false');
+  document.body.classList.remove('menu-open');
 }
+
 function toggleMenu() {
   if (!mobileMenu) return;
   const willOpen = mobileMenu.hidden;
-  mobileMenu.hidden = !willOpen ? true : false;
-  menuBtn?.setAttribute('aria-expanded', String(willOpen));
+  willOpen ? openMenu() : closeMenu();
 }
+
 menuBtn?.addEventListener('click', toggleMenu);
-mobileMenu?.addEventListener('click', e => { if (e.target.matches('a')) closeMenu(); });
-addEventListener('click', e => {
+
+// Links im mobilen Menü schließen das Menü nach Navigation
+mobileMenu?.addEventListener('click', (e) => {
+  if (e.target.matches('a')) closeMenu();
+});
+
+// Klick auf den Backdrop schließt das Menü
+menuBackdrop?.addEventListener('click', closeMenu);
+
+// ESC schließt
+addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+
+// Sicherheitsnetz: Fenster-Resize -> Menü schließen (Layoutwechsel)
+addEventListener('resize', closeMenu);
+
+// Optional: Klicks *irgendwo* außerhalb (falls du den Backdrop mal entfernst)
+addEventListener('click', (e) => {
   if (!mobileMenu || mobileMenu.hidden) return;
   const inside = mobileMenu.contains(e.target) || menuBtn.contains(e.target);
-  if (!inside) closeMenu();
+  if (!inside && !menuBackdrop) closeMenu();
 });
-addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
 // Smooth-Scroll nur bei internen Link-Klicks (kein globales smooth)
 document.querySelectorAll('a[href^="#"]').forEach(a => {

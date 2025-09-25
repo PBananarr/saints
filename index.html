@@ -1,6 +1,7 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,12 +9,13 @@
   <meta name="description" content="SAINTS TATTOO in Pirna – Galerie, Vita & Termin-Anfrage.">
 
   <!-- Lokale Fonts preladen -->
-<link rel="preload" as="font" href="fonts/fraunces-v38-latin-700.woff2" type="font/woff2" crossorigin>
-<link rel="preload" as="font" href="fonts/inter-v20-latin-regular.woff2" type="font/woff2" crossorigin>
-<link rel="icon" href="logo-saints.svg" type="image/svg+xml">
+  <link rel="preload" as="font" href="fonts/fraunces-v38-latin-700.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="fonts/inter-v20-latin-regular.woff2" type="font/woff2" crossorigin>
+  <link rel="icon" href="logo-saints.svg" type="image/svg+xml">
 
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <!-- ===== Header ===== -->
   <header class="site-header" id="top">
@@ -36,7 +38,8 @@
       <a class="cta header-cta" href="#booking">Termin</a>
 
       <!-- Hamburger (nur mobil) -->
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu"
+        aria-label="Menü öffnen">
         ☰
       </button>
     </div>
@@ -48,6 +51,9 @@
       <a href="#contact">Kontakt</a>
       <a href="https://www.instagram.com/saints_tattoo_1988/">Instagram</a>
     </div>
+
+    <div class="menu-backdrop" id="menuBackdrop" hidden aria-hidden="true"></div>
+
   </header>
 
   <!-- ===== Hero (minimal) ===== -->
@@ -103,16 +109,26 @@
         <div class="carousel-viewport">
           <div class="carousel-track">
             <!-- Jede .work-card ist eine „Slide“ -->
-            <figure class="work-card reveal-zoom" data-title="Tattoo 1"><img src="img/tattoo1.jpg" alt="Tattoo 1" /></figure>
-            <figure class="work-card reveal-zoom" data-title="Tattoo 2"><img src="img/tattoo2.jpg" alt="Tattoo 2" /></figure>
-            <figure class="work-card reveal-zoom" data-title="Tattoo 3"><img src="img/tattoo3.jpg" alt="Tattoo 3" /></figure>
-            <figure class="work-card reveal-zoom" data-title="Tattoo 4"><img src="img/tattoo4.jpg" alt="Tattoo 4" /></figure>
-            <figure class="work-card reveal-zoom" data-title="Tattoo 5"><img src="img/tattoo5.jpg" alt="Tattoo 5" /></figure>
-            <figure class="work-card reveal-zoom" data-title="Tattoo 6"><img src="img/tattoo6.jpg" alt="Tattoo 6" /></figure>
-            <figure class="work-card reveal-zoom" data-title="Tattoo 7"><img src="img/tattoo7.jpg" alt="Tattoo 7" /></figure>
-            <figure class="work-card reveal-zoom" data-title="Tattoo 8"><img src="img/tattoo8.jpg" alt="Tattoo 7" /></figure>
-            <figure class="work-card reveal-zoom" data-title="Tattoo 9"><img src="img/tattoo9.jpg" alt="Tattoo 9" /></figure>
-            <figure class="work-card reveal-zoom" data-title="Tattoo 10"><img src="img/tattoo10.jpg" alt="Tattoo 10" /></figure>
+            <figure class="work-card reveal-zoom" data-title="Tattoo 1"><img src="img/tattoo1.jpg" alt="Tattoo 1" />
+            </figure>
+            <figure class="work-card reveal-zoom" data-title="Tattoo 2"><img src="img/tattoo2.jpg" alt="Tattoo 2" />
+            </figure>
+            <figure class="work-card reveal-zoom" data-title="Tattoo 3"><img src="img/tattoo3.jpg" alt="Tattoo 3" />
+            </figure>
+            <figure class="work-card reveal-zoom" data-title="Tattoo 4"><img src="img/tattoo4.jpg" alt="Tattoo 4" />
+            </figure>
+            <figure class="work-card reveal-zoom" data-title="Tattoo 5"><img src="img/tattoo5.jpg" alt="Tattoo 5" />
+            </figure>
+            <figure class="work-card reveal-zoom" data-title="Tattoo 6"><img src="img/tattoo6.jpg" alt="Tattoo 6" />
+            </figure>
+            <figure class="work-card reveal-zoom" data-title="Tattoo 7"><img src="img/tattoo7.jpg" alt="Tattoo 7" />
+            </figure>
+            <figure class="work-card reveal-zoom" data-title="Tattoo 8"><img src="img/tattoo8.jpg" alt="Tattoo 7" />
+            </figure>
+            <figure class="work-card reveal-zoom" data-title="Tattoo 9"><img src="img/tattoo9.jpg" alt="Tattoo 9" />
+            </figure>
+            <figure class="work-card reveal-zoom" data-title="Tattoo 10"><img src="img/tattoo10.jpg" alt="Tattoo 10" />
+            </figure>
           </div>
         </div>
 
@@ -149,11 +165,14 @@
           <label>Telefon (optional)
             <input name="phone" placeholder="0151…" />
           </label>
-          <label>Wunschtermin (flexibel ist okay)
+          <!-- <label>Wunschtermin (flexibel ist okay)
             <input type="date" name="date" />
-          </label>
+          </label> 
+          <label>Zeig mir dein Motiv
+            <input type="file" name="refs[]" accept=".jpg,.jpeg,.png,image/jpeg,image/png" multiple>
+          </label>-->
         </div>
-        <label>Motividee / Nachricht
+        <label>Dein Tattoowunsch
           <textarea name="message" placeholder="Beschreibe deine Idee kurz…"></textarea>
         </label>
         <button class="btn" type="submit">Anfrage senden</button>
@@ -179,17 +198,18 @@
             referrerpolicy="no-referrer-when-downgrade">
           </iframe>
         </div>
-          <a class="btn ghost" target="_blank" rel="noopener"
-            href="https://www.google.com/maps/dir/?api=1&origin=Current+Location&destination=Saints+Tattoo,+Lange+Str.+8,+01796+Pirna&destination_place_id=ChIJL5RfM5-5CUcRBVo1ogrlwJs&travelmode=driving&dir_action=navigate">
-            Route planen
-          </a>
-        </div>
+        <a class="btn ghost" target="_blank" rel="noopener"
+          href="https://www.google.com/maps/dir/?api=1&origin=Current+Location&destination=Saints+Tattoo,+Lange+Str.+8,+01796+Pirna&destination_place_id=ChIJL5RfM5-5CUcRBVo1ogrlwJs&travelmode=driving&dir_action=navigate">
+          Route planen
+        </a>
+      </div>
   </section>
 
   <!-- ===== Footer ===== -->
   <footer class="site-footer">
     <div class="wrap foot-grid">
-      <a class="ig" href="https://www.instagram.com/saints_tattoo_1988/" target="_blank" rel="noopener" aria-label="Instagram">
+      <a class="ig" href="https://www.instagram.com/saints_tattoo_1988/" target="_blank" rel="noopener"
+        aria-label="Instagram">
         <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
           <path
             d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1 5 5H7a5 5 0 0 0-5-5V7a5 5 0 0 0 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2A2.8 2.8 0 1 0 12 16.8 2.8 2.8 0 0 0 12 9.2zM18 6.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
@@ -197,7 +217,7 @@
         </svg>
         <span>Instagram</span>
       </a>
-      <a class="link" href="/impressum.html">
+      <a class="link" href="impressum.html">
         <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
           <path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8h-6V2z" />
           <path fill="currentColor" d="M14 2l6 6h-6V2z" />
@@ -211,4 +231,5 @@
 
   <script defer src="main.js"></script>
 </body>
+
 </html>

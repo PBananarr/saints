@@ -1,5 +1,5 @@
 /* =========================
-   style.css (bereinigt)
+            style.css
    ========================= */
 
 :root {
@@ -392,6 +392,25 @@ a:focus-visible {
   }
 }
 
+/* --- Mobile-Menü Backdrop + Body-Lock --- */
+.menu-backdrop[hidden] { display: none !important; }
+
+.menu-backdrop {
+  position: fixed;
+  /* bedeckt alles unterhalb des Headers */
+  top: var(--header-h);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 39; /* unter dem Menü, über dem Seiteninhalt */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Seite nicht scrollen, solange das Menü offen ist */
+body.menu-open { overflow: hidden; }
+
+
 /* ---------- Hero ---------- */
 .hero {
   margin-top: var(--header-h);
@@ -480,7 +499,7 @@ a:focus-visible {
   .hero-minimal{ --sub-indent: 1.35ch; }  
 }
 @media (max-width: 860px){                        /* Tablet/kleine Laptops */
-  .hero-minimal .headline{ max-width: 11.5ch; }   /* Sicherheits-„Zwei-Zeilen“-Limit */
+  .hero-minimal .headline{ max-width: 11.5ch; }   
   .hero-minimal{ --sub-indent: 1.20ch; }
 }
 @media (max-width: 520px){                        /* Phones */
