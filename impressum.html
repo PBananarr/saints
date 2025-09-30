@@ -1,28 +1,154 @@
+<!-- impressum.html -->
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Impressum – SAINTS TATTOO</title>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    body{margin:0; font-family:Inter,system-ui; background:#0f0f10; color:#e8e8e8}
-    .wrap{max-width:900px; margin:0 auto; padding:32px 20px}
-    a{color:#fff}
-    h1{font-family:Oswald, sans-serif}
-    .card{background:#141415; border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:22px}
-  </style>
+  <meta name="description" content="Impressum & Datenschutzerklärung – SAINTS TATTOO in Pirna.">
+  <link rel="icon" href="logo-saints.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <div class="wrap">
-    <h1>Impressum</h1>
-    <div class="card">
-      <p><strong>SAINTS TATTOO</strong><br>
-      Lange Str. 8, 01796 Pirna<br>
-      E‑Mail: <a href="mailto:mouchel.bretschneider@gmail.com">mouchel.bretschneider@gmail.com</a></p>
-      <p>Angaben gemäß §5 TMG. (Platzhalter – bitte um eigene rechtliche Prüfung.)</p>
-      <p><a href="index.html">← Zurück zur Startseite</a></p>
+  <!-- ===== Header ===== -->
+  <header class="site-header" id="top">
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="SAINTS TATTOO Start">
+        <img class="logo" src="logo-saints.svg" alt="SAINTS TATTOO Logo" width="44" height="44" />
+        <span class="brand-title">SAINTS TATTOO</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="index.html#about">Über mich</a>
+        <a href="index.html#gallery">Galerie</a>
+        <a href="index.html#contact">Kontakt</a>
+        <a href="https://www.instagram.com/saints_tattoo_1988/">Instagram</a>
+      </nav>
+
+      <a class="cta header-cta" href="index.html#booking">Termin</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu"
+        aria-label="Menü öffnen">☰</button>
     </div>
-  </div>
+
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <a href="index.html#about">Über mich</a>
+      <a href="index.html#gallery">Galerie</a>
+      <a href="index.html#contact">Kontakt</a>
+      <a href="https://www.instagram.com/saints_tattoo_1988/">Instagram</a>
+    </div>
+
+    <div class="menu-backdrop" id="menuBackdrop" hidden aria-hidden="true"></div>
+  </header>
+
+  <!-- ===== Impressum ===== -->
+  <main class="section impressum">
+    <div class="wrap card slide-up">
+      <h1>Impressum</h1>
+
+      <h2>Angaben gemäß § 5 TMG</h2>
+      <p>
+        Michel Bretschneider<br>
+        Saints Tattoo<br>
+        Lange Straße 8<br>
+        01796 Pirna
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>
+        Telefon: 0162-7636792<br>
+        E-Mail: <a href="mailto:Mouchel.Bretschneider@gmail.com">Mouchel.Bretschneider@gmail.com</a>
+      </p>
+
+      <h2>Zuständige Aufsichtsbehörde</h2>
+      <p>Landratsamt Pirna – Gesundheitsamt</p>
+
+      <h1>Datenschutzerklärung</h1>
+
+      <h2>1. Verantwortlicher</h2>
+      <p>
+        Michel Bretschneider<br>
+        Saints Tattoo<br>
+        Lange Straße 8<br>
+        01796 Pirna<br>
+        Telefon: 0162-7636792<br>
+        E-Mail: <a href="mailto:Mouchel.Bretschneider@gmail.com">Mouchel.Bretschneider@gmail.com</a>
+      </p>
+
+      <h2 class="impressum-title"><span class="heading-gradient">2. Allgemeines zur Datenverarbeitung</span></h2>
+      <p>
+        Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Personenbezogene Daten werden nur
+        erhoben, wenn dies technisch notwendig ist oder Sie uns diese im Rahmen einer Kontaktaufnahme
+        freiwillig mitteilen.
+      </p>
+
+      <h2 class="impressum-title"><span class="heading-gradient">3. Erhebung und Speicherung personenbezogener Daten sowie Art und Zweck von deren Verwendung</span></h2>
+      <p><strong>a) Beim Besuch der Website:</strong><br>
+        Beim Aufrufen unserer Website werden automatisch Informationen (z. B. IP-Adresse, Datum,
+        Uhrzeit, Browser) erhoben und vorübergehend gespeichert.</p>
+      <p><strong>b) Bei Kontaktaufnahme:</strong><br>
+        Wenn Sie uns per Telefon oder E-Mail kontaktieren, speichern wir die von Ihnen übermittelten
+        Daten zur Bearbeitung Ihrer Anfrage.</p>
+
+      <h2>4. Weitergabe von Daten</h2>
+      <p>Eine Übermittlung Ihrer Daten an Dritte findet nicht statt, außer wir sind gesetzlich verpflichtet.</p>
+
+      <h2>5. Cookies / Analyse-Tools</h2>
+      <p>Unsere Website verwendet keine Cookies oder Analyse-Tools.</p>
+
+      <h2>6. Hygiene</h2>
+      <p>Deine Sicherheit ist unser höchstes Gut. Wir arbeiten ausschließlich mit sterilen Materialien, 
+        professioneller Technik und nach den Vorgaben des Gesundheitsamtes Pirna. 
+        So kannst du dich entspannt zurücklehnen – dein Tattoo entsteht unter besten Bedingungen.</p>
+
+      <h2>7. Ihre Rechte</h2>
+      <p>
+        Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der
+        Verarbeitung, Widerspruch sowie Datenübertragbarkeit gemäß DSGVO.
+      </p>
+
+      <h2>8. Beschwerderecht</h2>
+      <p>
+        Sie können sich bei der zuständigen Datenschutz-Aufsichtsbehörde beschweren:<br>
+        Der Sächsische Datenschutzbeauftragte<br>
+        Devrientstraße 5<br>
+        01067 Dresden<br>
+        Telefon: 0351/85471-101<br>
+        E-Mail: <a href="mailto:saechsdsb@slt.sachsen.de">saechsdsb@slt.sachsen.de</a>
+      </p>
+
+      <h2>9. Aktualität</h2>
+      <p>Diese Datenschutzerklärung hat den Stand: September 2025.</p>
+    </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="wrap foot-grid">
+      <a class="ig" href="https://www.instagram.com/saints_tattoo_1988/" target="_blank" rel="noopener"
+        aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path
+            d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1 5 5H7a5 5 0 0 0-5-5V7a5 5 0 0 0 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2A2.8 2.8 0 1 0 12 16.8 2.8 2.8 0 0 0 12 9.2zM18 6.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+            fill="currentColor" />
+        </svg>
+        <span>Instagram</span>
+      </a>
+      <a class="link" href="impressum.html">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8h-6V2z" />
+          <path fill="currentColor" d="M14 2l6 6h-6V2z" />
+        </svg>
+        Impressum
+      </a>
+
+      <div class="addr">© <span id="year"></span> SAINTS TATTOO · Lange Str. 8, 01796 Pirna</div>
+    </div>
+  </footer>
+
+  <script defer src="main.js"></script>
 </body>
+
 </html>

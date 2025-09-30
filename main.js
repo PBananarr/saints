@@ -124,6 +124,7 @@ cards.forEach((c, i) => {
     openLB(i);
   });
 });
+
 btnPrev?.addEventListener('click', () => nav(-1));
 btnNext?.addEventListener('click', () => nav(1));
 btnClose?.addEventListener('click', closeLB);
